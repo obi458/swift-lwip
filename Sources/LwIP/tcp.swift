@@ -235,9 +235,9 @@ public final class TCPListener: TCPBase {
 public final class TCPConnection: TCPBase {
     /// Create a new connection on a network interface
     /// - Parameter interface:
-    public init(interface: NetworkInterface) {
+    public init(address: IP4Address) {
         super.init()
-        try! bind(address: interface.address, port: 0)
+        try! bind(address: address, port: 0)
     }
 
     /// Create a connection with an existing pcb
@@ -246,6 +246,7 @@ public final class TCPConnection: TCPBase {
         assertCoreLocked()
         super.init(pcb: pcb)
     }
+    
 
     override func setup() {
         tcp_recv(tcpPcb, TCPConnection.recvFunction)
