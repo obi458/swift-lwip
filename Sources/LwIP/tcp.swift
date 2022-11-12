@@ -235,10 +235,9 @@ public final class TCPListener: TCPBase {
 public final class TCPConnection: TCPBase {
     /// Create a new connection on a network interface
     /// - Parameter interface:
-    public init(address: IP4Address) {
-        initializeTCPIP()
+    public init(interface: NetworkInterface) {
         super.init()
-        try! bind(address: address, port: 0)
+        try! bind(address: interface.address, port: 0)
     }
 
     /// Create a connection with an existing pcb
