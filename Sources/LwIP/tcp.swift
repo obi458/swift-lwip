@@ -479,4 +479,15 @@ public final class TCPConnection: TCPBase {
             try write0(data: data, completion: completion)
         }
     }
+    
+    public func localPort() -> UInt16 {
+        let pcb = tcpPcb
+        return (pcb?.pointee.local_port)!
+    }
+    
+    
+    public func remotePort() -> UInt16 {
+        let pcb = tcpPcb
+        return (pcb?.pointee.remote_port)!
+    }
 }
